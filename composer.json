@@ -1,0 +1,16 @@
+{
+    "name": "wachey/api",
+    "description": "Packet for a simple management of the API request for our monitoring platform",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Wachey\\Api\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Alberto Pisaroni"
+        }
+    ],
+    "require": {}
+}
