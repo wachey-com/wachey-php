@@ -3,44 +3,46 @@ namespace Wachey\Api;
 
 class Report {
 
-    private $error;
-    private $path;
-    private $line;
-    private $ip;
-    private $user;
-
-    public function __construct($error = null, $path = null, $line = null, $ip = null, $user = null) {
-        echo "Report class loaded";
-
-        $this->error = $error;
-        $this->path = $path;
-        $this->line = $line;
-        $this->ip = $ip;
-        $this->user = $user;
+    public function __construct() {
 
     }
 
-    public function error() {
+    public static function error($error = null, $path = null, $line = null, $ip = null, $user = null) {
     
-        $options = [
-            'http' => [
-                'header' => "Content-type: application/x-www-form-urlencoded\r\n",
-                'method' => 'POST',
-                'content' => http_build_query([
-                    'api_key' => 'QztESaXtTNjsCWCpDcvH3xowQztESaXtTNjsCWCpDcvH3xognchmr8jq3rhqcwroaxqb269c65mlfXNtxnXyiq5uNBbb269c65', 
-                    'password' => 'QztESaXtTNjsCWCpDcvH3xowQztESaXtTNjsCWCpDcvH3xowmlfXNtxnXyiq5uNBbb269c65mlfXNtxnXyiq5uNBbb269c65',
-                    'error' => $this->error,
-                    'path' => $this->path,
-                    'line' => $this->line,
-                    'ip' => $this->ip,
-                    'user' => $this->user,
-                ]),
-            ],
-        ];
+        try {
 
-        $context = stream_context_create($options);
-        $result = file_get_contents('https://api.wachey.com/report/error', false, $context);
+            $curl = curl_init();
+
+            curl_setopt($curl, CURLOPT_URL, 'https://api.wachey.com/report/error');
+            curl_setopt($curl, CURLOPT_POST, true);
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true); 
+
+            $data = array(
+                'api_key' => 'QztESaXtTNjsCWCpDcvH3xowQztESaXtTNjsCWCpDcvH3xognchmr8jq3rhqcwroaxqb269c65mlfXNtxnXyiq5uNBbb269c65', 
+                'password' => 'QztESaXtTNjsCWCpDcvH3xowQztESaXtTNjsCWCpDcvH3xognchmr8jq3rhqcwroaxqb269c65mlfXNtxnXyiq5uNBbb269c65',
+                'error' => $error,
+                'path' => $path,
+                'line' => $line,
+                'ip' => $ip,
+                'user' => $user
+            );
+
+            curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+
+            $response = curl_exec($curl);
+            curl_close($curl);
+
+            return json_decode($response);
+
+        } 
         
+        catch (\Exception $e) {
+
+            return $e->getMessage();
+
+        }
+
+       
     }
 
 
