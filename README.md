@@ -11,9 +11,10 @@ The `Wachey\Api\Report` class provides a simple interface for reporting errors t
 
 ## Installation
 
-1. Add the `Wachey\Api\Report` class to your PHP project.
-2. Make sure you have a `.env` file in your `public_html` directory (or specify a custom path if needed).
-3. In a non-Laravel environment, the `.env` file should contain your Wachey API credentials, such as:
+1. Install via composer typing `composer require wachey/api`
+2. Add the `Wachey\Api\Report` class to your PHP project.
+3. Make sure you have a `.env` file in your `public_html` directory (or specify a custom path if needed).
+4. In a non-Laravel environment, the `.env` file should contain your Wachey API credentials, such as:
 
     ```env
     WACHEY_API_KEY=your_wachey_api_key
@@ -21,7 +22,7 @@ The `Wachey\Api\Report` class provides a simple interface for reporting errors t
     APP_ENV=production
     ```
 
-4. In Laravel, use Laravel’s built-in `.env` handling mechanism.
+5. In Laravel, use Laravel’s built-in `.env` handling mechanism.
 
 ## Usage
 
