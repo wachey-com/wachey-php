@@ -4,7 +4,7 @@ A lightweight PHP client for sending error reports to the Wachey API, compatible
 
 > **Version:** 1.0.0
 > **License:** MIT
-> **Repository:** [https://github.com/tuo-org/wachey-report](https://github.com/tuo-org/wachey-report)
+> **Repository:** [https://github.com/wachey-com/wachey-php](https://github.com/wachey-com/wachey-php)
 
 ## Features
 
